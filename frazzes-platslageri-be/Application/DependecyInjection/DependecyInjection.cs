@@ -1,11 +1,11 @@
 ﻿using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Application
+namespace Application.DependecyInjection
 {
     public static class DependecyInjection
     {
-        public static IServiceCollection AddApplication (this IServiceCollection services)
+        public static IServiceCollection AddApplication(this IServiceCollection services)
         {
             var assembly = typeof(DependecyInjection).Assembly;
 
