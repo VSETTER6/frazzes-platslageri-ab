@@ -26,14 +26,14 @@ namespace Application.Users.Queries.GetAllUsers
                 }
                 else
                 {
-                    var userDto = users.Select(user => new GetAllUsersDto(
+                    var allUsersDto = users.Select(user => new GetAllUsersDto(
                         user.FirstName,
                         user.LastName,
                         user.Email ?? string.Empty,
                         user.PhoneNumber ?? string.Empty
                         )).ToList();
 
-                    return OperationResult<List<GetAllUsersDto>>.Successful(userDto);
+                    return OperationResult<List<GetAllUsersDto>>.Successful(allUsersDto);
                 }
             }
             catch (Exception ex)
