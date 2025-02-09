@@ -1,5 +1,5 @@
-using Application;
-using Infrastructure;
+using Application.DependecyInjection;
+using Infrastructure.DependecyInjection;
 using Serilog;
 
 namespace API
@@ -16,7 +16,7 @@ namespace API
 
             builder.Services
                 .AddApplication()
-                .AddInfrastructure();
+                .AddInfrastructure(builder.Configuration);
 
             builder.Host.UseSerilog((context, configuration)  =>
                 configuration.ReadFrom.Configuration(context.Configuration));

@@ -17,8 +17,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="DTOS\" />
-    <Folder Include="Users\" />
+    <Folder Include="DTOS\GetUserById\" />
+    <Folder Include="Users\Commands\" />
+    <Folder Include="Users\Queries\GetUserById\" />
   </ItemGroup>
 
 </Project>
