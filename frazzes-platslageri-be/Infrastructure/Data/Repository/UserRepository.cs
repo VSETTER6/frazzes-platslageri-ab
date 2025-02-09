@@ -24,12 +24,8 @@ namespace Infrastructure.Data.Repository
 
         public async Task DeleteAsync(Guid id)
         {
-            var user = await _database.Users.FindAsync(id);
-
-            if (user == null)
-            {
-                throw new KeyNotFoundException($"User with ID {id} was not found.");
-            }
+            // Fungerar som en if-sats, fast med mindre rader kod. Ifall id är null kastas ett exception.
+            var user = await _database.Users.FindAsync(id) ?? throw new KeyNotFoundException($"User with ID {id} was not found.");
 
             _database.Users.Remove(user);
             await _database.SaveChangesAsync();
@@ -47,14 +43,8 @@ namespace Infrastructure.Data.Repository
 
         public async Task<User> GetByIdAsync(Guid id)
         {
-            var user = await _database.Users.FirstOrDefaultAsync(user => user.Id == id);
-
-            if (user == null)
-            {
-                throw new KeyNotFoundException($"User with ID {id} was not found.");
-            }
-
-            return user;
+            // Fungerar som en if-sats, fast med mindre rader kod. Ifall id är null kastas ett exception.
+            return await _database.Users.FindAsync(id) ?? throw new KeyNotFoundException("User not found.");
         }
 
         public async Task<User> UpdateAsync(User user)
