@@ -16,16 +16,29 @@ namespace Application.Users.Queries.GetAllUsers
 
         public async Task<OperationResult<List<GetAllUsersDto>>> Handle(GetAllUsersQuery request, CancellationToken cancellationToken)
         {
-            var users = await _userRepository.GetAllAsync();
+            try
+            {
+                var users = await _userRepository.GetAllAsync();
 
-            if (users == null)
-            {
-                return OperationResult<List<GetAllUsersDto>>.Failed("An error occurred while getting the users.");
+                if (users == null)
+                {
+                    return OperationResult<List<GetAllUsersDto>>.Failed("No users found.");
+                }
+                else
+                {
+                    var userDto = users.Select(user => new GetAllUsersDto(
+                        user.FirstName,
+                        user.LastName,
+                        user.Email ?? string.Empty,
+                        user.PhoneNumber ?? string.Empty
+                        )).ToList();
+
+                    return OperationResult<List<GetAllUsersDto>>.Successful(userDto);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                var userDto = users.Select(user => new GetAllUsersDto(user.Id, user.FirstName, user.LastName)).ToList();
-                return OperationResult<List<GetAllUsersDto>>.Successful(userDto);
+                return OperationResult<List<GetAllUsersDto>>.Failed("An error occurred while getting the users." + ex);
             }
         }
     }
