@@ -1,10 +1,10 @@
-﻿using Domain.Interface;
-using Domain.Model;
+﻿using Domain.Interfaces;
+using Domain.Models;
 using Infrastructure.Database;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
-namespace Infrastructure.Data.Repository
+namespace Infrastructure.Data.Repositories
 {
     public class UserRepository : ICrudRepository<User>
     {
