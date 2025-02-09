@@ -398,3 +398,5 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+/frazzes-platslageri-be/API/appsettings.json
+/frazzes-platslageri-be/API/appsettings.Development.json
