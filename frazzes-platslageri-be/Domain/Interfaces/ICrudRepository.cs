@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 
-namespace Domain.Interface
+namespace Domain.Interfaces
 {
     public interface ICrudRepository<T> where T : class
     {
