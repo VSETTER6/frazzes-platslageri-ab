@@ -1,12 +1,11 @@
-﻿using Application.DTOS.GetAllUsers;
-using Application.DTOS.GetUserById;
+﻿using Application.DTOS.GetUserByIdDTO;
 using Domain.Interfaces;
 using Domain.Models;
 using MediatR;
 
 namespace Application.Users.Queries.GetUserById
 {
-    public class GetUserByIdQueryHandler : IRequestHandler<GetUserByIdQuery, OperationResult<GetUserByIdDto>>
+    public class GetUserByIdQueryHandler : IRequestHandler<GetUserByIdQuery, OperationResult<GetUserByIdDTO>>
     {
         private readonly ICrudRepository<User> _userRepository;
 
@@ -15,7 +14,7 @@ namespace Application.Users.Queries.GetUserById
             _userRepository = userRepository;
         }
 
-        public async Task<OperationResult<GetUserByIdDto>> Handle(GetUserByIdQuery request, CancellationToken cancellationToken)
+        public async Task<OperationResult<GetUserByIdDTO>> Handle(GetUserByIdQuery request, CancellationToken cancellationToken)
         {
             try
             {
@@ -23,22 +22,22 @@ namespace Application.Users.Queries.GetUserById
 
                 if (user == null)
                 {
-                    return OperationResult<GetUserByIdDto>.Failed($"User with ID {request.Id} was not found.");
+                    return OperationResult<GetUserByIdDTO>.Failed($"User with ID {request.Id} was not found.");
                 }
                 else
                 {
-                    var userByIdDto = new GetUserByIdDto(
+                    var userByIdDto = new GetUserByIdDTO(
                         user.Id,
                         user.FirstName,
                         user.LastName
                         );
 
-                    return OperationResult<GetUserByIdDto>.Successful(userByIdDto);
+                    return OperationResult<GetUserByIdDTO>.Successful(userByIdDto);
                 }
             }
             catch (Exception) 
             {
-                return OperationResult<GetUserByIdDto>.Failed("An error occurred while getting the user.");
+                return OperationResult<GetUserByIdDTO>.Failed("An error occurred while getting the user.");
             }
         }
     }

@@ -1,11 +1,11 @@
-﻿using Application.DTOS.GetAllUsers;
+﻿using Application.DTOS.GetAllUsersDTO;
 using Domain.Interfaces;
 using Domain.Models;
 using MediatR;
 
 namespace Application.Users.Queries.GetAllUsers
 {
-    public class GetAllUsersQueryHandler : IRequestHandler<GetAllUsersQuery, OperationResult<List<GetAllUsersDto>>>
+    public class GetAllUsersQueryHandler : IRequestHandler<GetAllUsersQuery, OperationResult<List<GetAllUsersDTO>>>
     {
         private readonly ICrudRepository<User> _userRepository;
 
@@ -14,7 +14,7 @@ namespace Application.Users.Queries.GetAllUsers
             _userRepository = userRepository;
         }
 
-        public async Task<OperationResult<List<GetAllUsersDto>>> Handle(GetAllUsersQuery request, CancellationToken cancellationToken)
+        public async Task<OperationResult<List<GetAllUsersDTO>>> Handle(GetAllUsersQuery request, CancellationToken cancellationToken)
         {
             try
             {
@@ -22,23 +22,23 @@ namespace Application.Users.Queries.GetAllUsers
 
                 if (users == null)
                 {
-                    return OperationResult<List<GetAllUsersDto>>.Failed("No users found.");
+                    return OperationResult<List<GetAllUsersDTO>>.Failed("No users found.");
                 }
                 else
                 {
-                    var allUsersDto = users.Select(user => new GetAllUsersDto(
+                    var allUsersDto = users.Select(user => new GetAllUsersDTO(
                         user.FirstName,
                         user.LastName,
                         user.Email ?? string.Empty,
                         user.PhoneNumber ?? string.Empty
                         )).ToList();
 
-                    return OperationResult<List<GetAllUsersDto>>.Successful(allUsersDto);
+                    return OperationResult<List<GetAllUsersDTO>>.Successful(allUsersDto);
                 }
             }
             catch (Exception)
             {
-                return OperationResult<List<GetAllUsersDto>>.Failed("An error occurred while getting the users.");
+                return OperationResult<List<GetAllUsersDTO>>.Failed("An error occurred while getting the users.");
             }
         }
     }
