@@ -1,4 +1,4 @@
-﻿namespace Application.DTOS.GetAllUsers
+﻿namespace Application.DTOS.User.GetAllUsers
 {
     public class GetAllUsersDTO
     {

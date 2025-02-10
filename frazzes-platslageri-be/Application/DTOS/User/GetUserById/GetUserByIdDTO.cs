@@ -1,4 +1,4 @@
-﻿namespace Application.DTOS.GetUserById
+﻿namespace Application.DTOS.User.GetUserById
 {
     public class GetUserByIdDTO
     {

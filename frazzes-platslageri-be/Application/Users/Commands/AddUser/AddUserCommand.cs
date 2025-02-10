@@ -1,4 +1,4 @@
-﻿using Application.DTOS.AddUser;
+﻿using Application.DTOS.User.AddUser;
 using Domain.Models;
 using MediatR;
 
