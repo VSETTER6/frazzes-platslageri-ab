@@ -1,11 +1,11 @@
-﻿using Application.DTOS.GetAllUsersDTO;
+﻿using Application.DTOS.GetAllUsers;
 using Domain.Interfaces;
 using Domain.Models;
 using MediatR;
 
 namespace Application.Users.Queries.GetAllUsers
 {
-    public class GetAllUsersQueryHandler : IRequestHandler<GetAllUsersQuery, OperationResult<List<GetAllUsersDTO>>>
+    public sealed class GetAllUsersQueryHandler : IRequestHandler<GetAllUsersQuery, OperationResult<List<GetAllUsersDTO>>>
     {
         private readonly ICrudRepository<User> _userRepository;
 
