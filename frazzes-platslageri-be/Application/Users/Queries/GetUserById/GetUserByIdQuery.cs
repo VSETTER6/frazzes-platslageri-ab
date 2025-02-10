@@ -1,4 +1,4 @@
-﻿using Application.DTOS.GetUserById;
+﻿using Application.DTOS.User.GetUserById;
 using Domain.Models;
 using MediatR;
 

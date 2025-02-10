@@ -22,9 +22,6 @@ namespace Application.Users.Commands.AddUser
                     string.IsNullOrWhiteSpace(request.AddUserDto.Email) ||
                     string.IsNullOrWhiteSpace(request.AddUserDto.UserName) ||
                     string.IsNullOrWhiteSpace(request.AddUserDto.Password))
-
-
-
                 {
                     return OperationResult<User>.Failed("None of the required fields can be empty.");
                 }
@@ -43,9 +40,7 @@ namespace Application.Users.Commands.AddUser
                         CreatedAt = request.AddUserDto.CreatedAt
                     };
 
-
                     await _userRepository.AddAsync(newUser);
-
                     return OperationResult<User>.Successful(newUser);
                 }
             }

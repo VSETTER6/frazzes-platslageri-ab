@@ -1,4 +1,4 @@
-﻿using Application.DTOS.GetAllUsers;
+﻿using Application.DTOS.User.GetAllUsers;
 using Domain.Interfaces;
 using Domain.Models;
 using MediatR;
