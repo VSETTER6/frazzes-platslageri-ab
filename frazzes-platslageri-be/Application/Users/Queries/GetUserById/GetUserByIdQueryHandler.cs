@@ -36,9 +36,9 @@ namespace Application.Users.Queries.GetUserById
                     return OperationResult<GetUserByIdDto>.Successful(userByIdDto);
                 }
             }
-            catch (Exception ex) 
+            catch (Exception) 
             {
-                return OperationResult<GetUserByIdDto>.Failed("An error occurred while getting the user." + ex);
+                return OperationResult<GetUserByIdDto>.Failed("An error occurred while getting the user.");
             }
         }
     }

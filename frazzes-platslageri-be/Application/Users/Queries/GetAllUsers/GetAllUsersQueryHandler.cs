@@ -36,9 +36,9 @@ namespace Application.Users.Queries.GetAllUsers
                     return OperationResult<List<GetAllUsersDto>>.Successful(allUsersDto);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return OperationResult<List<GetAllUsersDto>>.Failed("An error occurred while getting the users." + ex);
+                return OperationResult<List<GetAllUsersDto>>.Failed("An error occurred while getting the users.");
             }
         }
     }

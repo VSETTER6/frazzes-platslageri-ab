@@ -33,6 +33,11 @@ namespace Domain.Models
             if (IsSuccessful)
             {
                 Log.Information("OperationResult created successfully. Message: {Message}, Data: {Data}", Message, Data);
+
+                if (Data != null)
+                {
+                    Log.Information("Returned data: {@Data}", Data);
+                }
             }
             else
             {
