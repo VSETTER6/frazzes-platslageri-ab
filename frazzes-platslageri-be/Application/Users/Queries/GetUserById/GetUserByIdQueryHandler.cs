@@ -1,11 +1,11 @@
-﻿using Application.DTOS.GetUserByIdDTO;
+﻿using Application.DTOS.GetUserById;
 using Domain.Interfaces;
 using Domain.Models;
 using MediatR;
 
 namespace Application.Users.Queries.GetUserById
 {
-    public class GetUserByIdQueryHandler : IRequestHandler<GetUserByIdQuery, OperationResult<GetUserByIdDTO>>
+    public sealed class GetUserByIdQueryHandler : IRequestHandler<GetUserByIdQuery, OperationResult<GetUserByIdDTO>>
     {
         private readonly ICrudRepository<User> _userRepository;
 
