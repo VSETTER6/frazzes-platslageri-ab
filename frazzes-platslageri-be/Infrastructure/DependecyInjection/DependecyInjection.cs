@@ -1,6 +1,5 @@
 ﻿using Domain.Interfaces;
 using Domain.Models;
-using Infrastructure.Authentication;
 using Infrastructure.Data.Repositories;
 using Infrastructure.Database;
 using Microsoft.EntityFrameworkCore;
@@ -21,7 +20,6 @@ namespace Infrastructure.DependecyInjection
             });
 
             services.AddScoped<ICrudRepository<User>, UserRepository>();
-            services.AddScoped<IJwtProvider, JwtProvider>();
 
             return services;
         }
