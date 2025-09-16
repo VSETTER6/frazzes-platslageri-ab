@@ -1,4 +1,6 @@
-﻿using FluentValidation;
+﻿using Application.Abbstractions;
+using Domain.Models;
+using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Application.DependecyInjection
